@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
+@extends('app')
 
-    </head>
-    <body>
-        <h1> {{$titulo}} </h1>
-        <form action="{{ route('addCoche')}}" method="POST">
-            @csrf
+@section('title', "Formulario añadir coche")
 
-            <label for="">Marca:</label>
-            <input type="text" name="marca">
-            <label for="">Modelo:</label>
-            <input type="text" name="modelo">
-            <label for="">Potencia:</label>
-            <input type="number" name="potencia">
+@section('content')
+    <form action="{{ route('addCoche')}}" method="POST">
+        @csrf
 
-            <input type="submit" value="Enviar datos">
-        </form>
-    </body>
-    <footer>
+        <label for="">Marca:</label>
+        <input type="text" name="marca">
+        <label for="">Modelo:</label>
+        <input type="text" name="modelo">
+        <label for="">Potencia:</label>
+        <input type="number" name="potencia">
 
-    </footer>
-</html>
+        <input type="submit" value="Enviar datos">
+    </form>
+@endsection

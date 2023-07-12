@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
+@extends('app')
 
-    </head>
-    <body>
-        <h1> El coche se ha añadido. </h1>
-    </body>
-    <footer>
+@section('title', "Respuesta formulario añadir")
 
-    </footer>
-</html>
+@section('content')
+    @if( $id > 0)
+        @component('alert' , ['type' => 'succes'])
+            <p>  Se ha añadido correctamente</p>
+        @endcomponent
+    @else
+        @component('alert' , ['type' => 'danger'])
+            <p>  Hay un error.</p>
+        @endcomponent
+    @endif
+@endsection

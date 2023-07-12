@@ -21,6 +21,10 @@ Route::get('/', function () {
 
 Route::get('/cambiarCoche', [CochesController::class,'updateCoche']);
 Route::get('/deleteCoche', [CochesController::class,'deleteCoche']);
-Route::get('/mostarFormulario', [CochesController::class,'showFormularioAddCoche']);
+Route::get('/formAddCar', [CochesController::class,'showFormularioAddCoche']);
 
 Route::post('/addCoche', [CochesController::class,'addCocheFormulario'])->name('addCoche') ;
+Route::get('/showCoches', [CochesController::class, 'showAllCoches']);
+
+
+Route::get('/pruebas' , [CochesController::class, 'showPrueba'] );

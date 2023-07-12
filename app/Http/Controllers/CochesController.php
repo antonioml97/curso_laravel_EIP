@@ -22,7 +22,16 @@ class CochesController extends Controller
     }
 
     public function addCocheFormulario(Request $request){
-        Coche::create($request);
-        return view('concesionario\addCocheOk_Formulario'  );
+        $id_cooche = Coche::create($request);
+        return view('concesionario\addCocheOk_Formulario' , ['id' => $id_cooche] );
+    }
+
+    public function showAllCoches(){
+        $coches = Coche::allCar();
+        return view('concesionario.mostarCoches')->with('coches', $coches);
+    }
+
+    public function showPrueba(){
+        return view('alertBad');
     }
 }

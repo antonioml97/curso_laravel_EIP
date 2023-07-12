@@ -18,6 +18,8 @@ class Coche extends Model
         $coche->modelo = $request->input('modelo');
         $coche->potencia = $request->input('potencia');
         $coche->save();
+
+        return $coche->id;
     }
 
     public static function updated($id){
@@ -32,4 +34,7 @@ class Coche extends Model
         $coche->delete();
     }
 
+    public static function allCar(){
+        return Coche::all();
+    }
 }
