@@ -22,9 +22,11 @@ class Coche extends Model
         return $coche->id;
     }
 
-    public static function updated($id){
+    public static function uptatedID($id , Request $request){
         $coche = Coche::find($id);
-        $coche->marca = "Mercedes";
+        $coche->marca = $request->input('marca');
+        $coche->modelo = $request->input('modelo');
+        $coche->potencia = $request->input('potencia');
         $coche->save();
     }
 
@@ -36,5 +38,9 @@ class Coche extends Model
 
     public static function allCar(){
         return Coche::all();
+    }
+
+    public static function findCarID($id){
+        return Coche::find($id);
     }
 }

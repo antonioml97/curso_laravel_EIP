@@ -26,5 +26,9 @@ Route::get('/formAddCar', [CochesController::class,'showFormularioAddCoche']);
 Route::post('/addCoche', [CochesController::class,'addCocheFormulario'])->name('addCoche') ;
 Route::get('/showCoches', [CochesController::class, 'showAllCoches']);
 
+Route::get('/deleteCar/{id}' , [CochesController::class, 'deleteCar'])->name('deleteCar');
+
+Route::get('/updateCarForm/{id}' , [CochesController::class, 'updateCarForm'])->name('updateCarForm');
+Route::post('/updateCar' , [CochesController::class, 'updateCar'])->name('updateCar');
 
 Route::get('/pruebas' , [CochesController::class, 'showPrueba'] );

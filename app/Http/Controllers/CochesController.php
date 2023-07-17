@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Coche;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class CochesController extends Controller
 {
@@ -33,5 +35,23 @@ class CochesController extends Controller
 
     public function showPrueba(){
         return view('alertBad');
+    }
+
+    public function deleteCar($id){
+        Coche::destroy($id);
+        return Redirect::to('/showCoches');
+    }
+
+    public function updateCarForm($id){
+        $coche = Coche::findCarID($id);
+        Session::flash('id' , $id);
+        return view('concesionario.mostarDatosCocheForm', compact('coche'));
+    }
+
+    public function updateCar(Request $request){
+        $id = Session::get('id');
+        Coche::uptatedID($id, $request);
+
+        return Redirect::to('/showCoches');
     }
 }

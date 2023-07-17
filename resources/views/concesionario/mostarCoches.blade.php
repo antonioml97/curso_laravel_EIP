@@ -13,17 +13,11 @@
                     <th> Modelo </th>
                     <th> Potencia</th>
                     <th> Matricula</th>
+                    <th> Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($coches as $coche)
-                <tr>
-                    <td> {{$coche->marca}}</td>
-                    <td> {{$coche->modelo}}</td>
-                    <td>{{$coche->potencia}}</td>
-                    <td>{{$coche->matricula}}</td>
-                </tr>
-                @endforeach
+                @each('components.table', $coches , 'coche')
             </tbody>
         </table>
     @endif
