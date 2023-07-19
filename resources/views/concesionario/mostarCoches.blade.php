@@ -3,6 +3,31 @@
 @section('title' , 'Mostar Coches')
 
 @section('content')
+    <form action="{{ route('showAllCochesBrand') }}" method="POST">
+        @csrf
+        <label for="">Marca:</label>
+        <input type="text" name="marca">
+        <input type="submit" value="Find">
+    </form>
+
+    <form action="{{ route('showAllCochesPower') }}" method="POST">
+        @csrf
+        <label for="">Potencia:</label>
+        <input type="text" name="potencia">
+        <input type="submit" value="Find">
+    </form>
+
+    <form action="{{ route('showAllCochesPowerIntervalo') }}" method="POST">
+        @csrf
+        <label for="">Potencia 1:</label>
+        <input type="text" name="potencia1">
+
+        <label for="">Potencia 2:</label>
+        <input type="text" name="potencia2">
+
+        <input type="submit" value="Find">
+    </form>
+
     @if ($coches->isEmpty())
         <p> No hay coches </p>
     @else

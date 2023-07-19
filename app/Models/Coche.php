@@ -43,4 +43,19 @@ class Coche extends Model
     public static function findCarID($id){
         return Coche::find($id);
     }
+
+    public static function findBrand($marca){
+        return Coche::where('marca' , '=' , $marca)->get();
+    }
+
+    public static function findPower($potencia){
+        return Coche::where('potencia' , '>' , $potencia)->get();
+    }
+
+    public static function findPowerIntervalo($power1 , $power2){
+        return Coche::where('potencia' , '>=' , $power1)
+                    ->where('potencia' , '<' , $power2)
+                    ->get();
+    }
+
 }
