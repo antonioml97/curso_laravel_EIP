@@ -36,3 +36,7 @@ Route::get('/pruebas' , [CochesController::class, 'showPrueba'] );
 Route::post('/showAllCochesBrand', [CochesController::class, 'showAllCochesBrand'])->name('showAllCochesBrand');
 Route::post('/showAllCochesPower', [CochesController::class, 'showAllCochesPower'])->name('showAllCochesPower');
 Route::post('/showAllCochesPowerIntervalo', [CochesController::class, 'showAllCochesPowerIntervalo'])->name('showAllCochesPowerIntervalo');
+
+Route::get('/primerComponente', function () {
+    return view('primerComponente');
+});

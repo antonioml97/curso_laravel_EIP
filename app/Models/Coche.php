@@ -58,4 +58,16 @@ class Coche extends Model
                     ->get();
     }
 
+
+    public static function createValores($marca, $modelo , $potencia , $matricula){
+        $coche = new Coche();
+        $coche->marca = $marca;
+        $coche->modelo = $modelo;
+        $coche->potencia = $potencia;
+        $coche->matricula = $matricula;
+        $coche->save();
+
+        return $coche;
+    }
+
 }

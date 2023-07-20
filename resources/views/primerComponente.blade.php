@@ -3,5 +3,5 @@
 @section('title', "Primeros pasos Livewire")
 
 @section('content')
-    @livewire('tabla-coche-component')
+    @livewire('counter-component')
 @endsection

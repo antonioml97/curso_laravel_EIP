@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
 
+    @livewireStyles()
     <title> @yield('title') </title>
 </head>
 <body>
@@ -22,5 +23,7 @@
     <div class="...">
         @yield('content')
     </div>
+
+    @livewireScripts()
 </body>
 </html>
