@@ -24,7 +24,7 @@ Route::get('/deleteCoche', [CochesController::class,'deleteCoche']);
 Route::get('/formAddCar', [CochesController::class,'showFormularioAddCoche']);
 
 Route::post('/addCoche', [CochesController::class,'addCocheFormulario'])->name('addCoche') ;
-Route::get('/showCoches', [CochesController::class, 'showAllCoches']);
+Route::get('/showCoches', [CochesController::class, 'showAllCoches'])->name('showCoches');
 
 Route::get('/deleteCar/{id}' , [CochesController::class, 'deleteCar'])->name('deleteCar');
 
@@ -39,4 +39,14 @@ Route::post('/showAllCochesPowerIntervalo', [CochesController::class, 'showAllCo
 
 Route::get('/primerComponente', function () {
     return view('primerComponente');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
