@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Coche;
-use Illuminate\Validation\ValidationException ;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\ComprasModel;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException ;
 
 class CochesController extends Controller
 {
@@ -35,7 +36,8 @@ class CochesController extends Controller
     }
 
     public function showPrueba(){
-        return view('alertBad');
+        $compras = ComprasModel::all();
+        dd($compras);
     }
 
     public function deleteCar($id){
@@ -120,5 +122,31 @@ class CochesController extends Controller
     public function showAllCochesPowerIntervalo(Request $request){
         $allCarPower = Coche::findPowerIntervalo($request->input('potencia1') , $request->input('potencia2'));
         return view('concesionario.mostarCoches')->with('coches', $allCarPower);
+    }
+
+    public function showVentas(Request $request){
+        $compras = ComprasModel::all();
+        $resultado = [];
+        if( isset($compras)){
+            foreach($compras as $compra){
+                if($compra->usuario->email == $request->input('user_compra')){
+                    $resultado[] = $compra->coche;
+                    $resultado = collect($resultado);
+                    return view('concesionario.mostarCoches')->with('coches', $resultado);
+                }
+                if($compra->coche->matricula == $request->input('matricula_vehiculo')){
+                    $resultado[] = $compra->coche;
+                    $resultado = collect($resultado);
+                    return view('concesionario.mostarCoches')->with('coches', $resultado);
+                }
+            }
+            return "No se ha vendido ese coche";
+        }
+        else{
+            return "No existe ninguna compra";
+        }
+
+        return view('concesionario.mostarCoches')->with('coches', []);
+
     }
 }

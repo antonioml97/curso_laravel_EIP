@@ -50,3 +50,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::post('/showVentas' , [CochesController::class, 'showVentas'])->name('showVentas');

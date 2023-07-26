@@ -28,6 +28,17 @@
         <input type="submit" value="Find">
     </form>
 
+    <form action="{{ route('showVentas') }}" method="POST">
+        @csrf
+        <label for="">Email que ha comprado el coche:</label>
+        <input type="text" name="user_compra">
+
+        <label for="">Matricula del vehiculo:</label>
+        <input type="text" name="matricula_vehiculo">
+
+        <input type="submit" value="Find">
+    </form>
+
     @if ($coches->isEmpty())
         <p> No hay coches </p>
     @else

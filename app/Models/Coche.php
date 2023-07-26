@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Http\Request;
-
+use App\Models\ComprasModel;
 
 class Coche extends Model
 {
     use HasFactory;
+
+    public function compras(){
+        return $this->belongsTo(ComprasModel::class, 'coches_id' , 'id');
+    }
 
     public static function create(Request $request){
         $coche = new Coche();
@@ -70,4 +74,8 @@ class Coche extends Model
         return $coche;
     }
 
+
+    public static function findMatricula($matricula){
+        return Coche::where('matricula' , '=' , $matricula)->get();
+    }
 }
